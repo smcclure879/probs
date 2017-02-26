@@ -51,39 +51,56 @@ var rules = [
 
 show(rules.map(bits));
 
+var b=[]; //empty board, no moves made
 
-var m = 1; //move to make on board
-var b = 0; //empty board
-var i = 0; //rule indexer
-//bugbug you are here. for each starting peg, b=m=that peg, run this...
+//try all m's later...bugbug
+attempt(b,m);
+exit(0);
+
+
+
+
+function attempt(board,move) {
+    if ( board.peek() & move ) { //move is valid, no slot
+	
+
+}
 while(1) {
-    show(bits(b));
+    show(bits(b)+"--"+i);
+
     var r=rules[i];
     var x=r&m;
-    if (!x)    //move doesn't apply to this slot
-	goto nextRule;
-    x=r-m;     //new move
-    if (x&b)   //already a peg there
-	goto nextRule;
-    //else
+    if (x) {    //move applies to this slot
+	x=r-m;     //new move
+	if (!(x&b)) {   //not already a peg there
+	    //make the move, FORWARD PROGRESS is here
+	    b |= x;
+	    oldMoves.push(m);
+	    m  = x;      
+	    i = 0;
+	    next;
+	}else{
 
-    //make the move, FORWARD PROGRESS is here
-    b |= x;
-    m  = x;      
-    next;
+	
+	}
+    }else{
+
+    }
+
+
+//bugbug still need a stack to keep old moves and pop one out below if we don't find other rules
     	
-
 
 nextRule:
     i++;
     if (i>rules.length) {
+	//regress board state
+	b=b-m;
+	m=oldMoves.pop();
+	//how to recover old m?
 	i=0;
-	m <<= 1;
-	if (m>255) {
-	    show("fail");
-	    exit(1);
-	}
     }
+    
 
 }  //end while(1)
 
