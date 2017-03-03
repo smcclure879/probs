@@ -10,17 +10,8 @@ def isKap(x):
     x2=x*x
     digitsInX = math.floor(math.log10(x)+1)
     radix = 10**digitsInX
-    #print x,digitsInX,radix
     return x2//radix + x2%radix == x
-# def sumDigits(y):
-#     retval = 0
-#     while y:
-#         retval = retval + y%10
-#         y = y // 10
-#     return retval
 
-
-#def isKapKind(x,x2,radix):
 
 
 def square(x):
@@ -29,15 +20,6 @@ def square(x):
 print filter(isKap,range(a,b))
 
 exit(0);
-
-
-
-
-
-
-
-
-
 
 
 """
