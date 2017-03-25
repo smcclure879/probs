@@ -1,0 +1,29 @@
+bloom filter (etc) competition proposal....
+
+
+part A: write a bloom filter...details in wikipedia
+
+1. write a function to quickly check if a list like words1.txt has any dups. (I THINK this one has none. prove me wrong?)
+2. the file might be delimited by spaces, tabs, and line feeds, not just line feeds as in words1.txt
+3. words1.txt is the only example of a permissible file I have at this time.  But any doc should work.  
+4. optimize for proving a document has no dups.  
+5. one line output... "no dups" or "FIRST DUP: excelsior"  (or whatever word you actually found)
+6. treat any whitespace as non-word, anything else such as '".,-/  etc as a "word character"
+
+part B: 
+now that we have a small filter that can tell if something's in our big list, it's effectively a word-detecting-function as used in spell checkers etc.  Can you use machine learning to come up with a better hash function to use in the filter from part A?
+
+part C: competition (word-bots)
+1. who can write the smallest/fastest/most-accurate is-it-a-word meta-function ?
+2. a new file will be prepared by me.  it will be a word list similar to this file
+3. your program will have up to 30 seconds to read the file and work out a filter...using as much cloud power as you want..."the sky is the limit"...ha!
+4. the filter thus produced will be given a new file, similar in size to the first, and have to quickly output all nonwords. 
+5. it does this on a single computer.
+5. score is 1000/durationMilliseconds - 1000*mistakenWords (counting both false positive and false negatives as 1 each)
+6. compute and output your own durationMs please
+
+
+Can anyone write a better solution than generating an optimized bloom?  e.g. a neural net that it uncanily good at word recognition using heuristics like "VVCCCC is probably not a word"
+
+
+
